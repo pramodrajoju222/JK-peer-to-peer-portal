@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script type="module" src="./admin_homepage.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #4a90e2;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropbtn {
+            background-color: #4a90e2; /* Button color */
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block; /* Show dropdown on hover */
+        }
+        .dropdown-content h2 {
+            margin: 10px;
+            font-size: 1.5em;
+            color: #4a90e2; /* Title color */
+        }
+        .dropdown-content div {
+            padding: 10px;
+            border-bottom: 1px solid #eee; /* Divider between items */
+        }
+        .dropdown-content div:last-child {
+            border-bottom: none; /* Remove last border */
+        }
+        .logout-button {
+            text-align: center;
+            padding: 10px;
+        }
+        .logout-button button {
+            background-color: #e94e77; /* Logout button color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; /* Transition effect */
+        }
+        .logout-button button:hover {
+            background-color: #d43f6a; /* Darker shade on hover */
+        }
+        h2 {
+            text-align: center; 
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse; 
+          margin-top: 20px; 
+          background-color:#fff; 
+          box-shadow:0px 2px 5px rgba(0,0,0,0.1);
+      }
+      th, td {
+          padding: 12px; 
+          text-align:left; 
+          border-bottom :1px solid #ddd; 
+      }
+
+      th {
+          background-color:#4a90e2; 
+          color:white; 
+      }
+
+      tr:nth-child(even) {
+          background-color:#f2f2f2; 
+      }
+
+      tr:hover {
+          background-color:#e1e1e1; 
+      }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        
+        <!-- Dropdown Menu -->
+        <div class="dropdown">
+           <button class="dropbtn">User Menu</button>
+           <div class="dropdown-content">
+               <h2>User Info</h2>
+               <div>First Name: <span id="loggedUserFName"></span></div>
+               <div>Last Name: <span id="loggedUserLName"></span></div>
+               <div>Email: <span id="loggedUserEmail"></span></div>
+               <!-- Logout Button -->
+               <div class="logout-button">
+                   <button id="logout">Logout</button>
+               </div>
+           </div>
+       </div>
+
+    </div>
+
+    <h2>All Users and Their Documents</h2>
+    <table id="userDocumentsTable">
+        <!-- User info and documents will be populated here -->
+    </table>
+
+</body>
+</html>
