@@ -5,11 +5,11 @@
     font-family:"poppins",sans-serif;
 }
 body{
-    background-color: #c9d6ff;
-    background:linear-gradient(to right,#e2e2e2,#c9d6ff);
+    background-color: #faecbf;
+    background:linear-gradient(to right,#e2e2e2,#fae9b0);
 }
 .container{
-    background:#fff;
+    background:#115740;
     width:450px;
     padding:1.5rem;
     margin:50px auto;
@@ -25,9 +25,10 @@ form{
     text-align:center;
     padding:1.3rem;
     margin-bottom:0.4rem;
+    color: white;
 }
 input{
-    color:inherit;
+    color:rgb(225, 221, 221);
     width:100%;
     background-color:transparent;
     border:none;
@@ -42,27 +43,28 @@ input{
 }
 .input-group i{
     position:absolute;
-    color:black;
+    color:#ffc711;
 }
 input:focus{
     background-color: transparent;
     outline:transparent;
-    border-bottom:2px solid hsl(327,90%,28%);
+    border-bottom:2px solid hsl(300, 9%, 98%);
 }
 input::placeholder{
     color:transparent;
 }
 label{
-    color:#757575;
+    color:rgb(176, 174, 174);
     position:relative;
     left:1.2em;
     top:-1.3em;
     cursor:auto;
     transition:0.3s ease all;
+    margin-left: 1em;
 }
 input:focus~label,input:not(:placeholder-shown)~label{
     top:-3em;
-    color:hsl(327,90%,28%);
+    color:white;
     font-size:15px;
 }
 .recover{
@@ -73,10 +75,10 @@ input:focus~label,input:not(:placeholder-shown)~label{
 }
 .recover a{
     text-decoration:none;
-    color:rgb(125,125,235);
+    color:#ffc711;
 }
 .recover a:hover{
-    color:blue;
+    color:white;
     text-decoration:underline;
 }
 button{
@@ -86,24 +88,25 @@ button{
     outline:none;
     border:none;
     width:100%;
-    background:rgb(125,125,235);
-    color:white;
+    background:#ffc711;
+    color:#115740;
     cursor:pointer;
     transition:0.9s;
 }
 button:hover{
-    background:#07001f;
+    background:white;
 }
 .or{
     font-size:1.1rem;
     margin-top:0.5rem;
     text-align:center;
+    color: white;
 }
 .icons{
     text-align:center;
 }
 .icons i{
-    color:rgb(125,125,235);
+    color:#ffc711;
     padding:0.8rem 1.5rem;
     border-radius:10px;
     font-size:1.5rem;
@@ -113,9 +116,10 @@ button:hover{
     transition:1s;
 }
 .icons i:hover{
-    background:#07001f;
+    background:#ffc711;
+    color: #115740;
     font-size:1.6rem;
-    border:2px solid rgb(125,125,235);
+   
 }
 .links{
     display:flex;
@@ -123,9 +127,11 @@ button:hover{
     padding:0 4rem;
     margin-top:0.9rem;
     font-weight:bold;
+    color: white;
+    
 }
  #signUpButton, #signInButton{
-    color:rgb(125,125,235);
+    color:white;
     border:none;
     background-color:transparent;
     font-size:1rem;
@@ -133,7 +139,7 @@ button:hover{
 }
 #signUpButton:hover, #signInButton:hover {
     text-decoration:underline;
-    color:blue;
+    color:#ffc711;
 } 
 .messageDiv{
     background-color:hsl(327,90%,28%);
@@ -146,3 +152,6 @@ button:hover{
     animation:fadeOut 7s forwards;
 
 }
+
+
+
