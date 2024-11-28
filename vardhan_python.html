@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access and Image Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align items at the top */
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0; /* No margin around the body */
+        }
+        /* Navigation Bar Styles */
+        .navbar {
+            width: 100%;
+            background-color: #007BFF;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-bottom: 20px; /* Space below the navbar */
+        }
+        .navbar img {
+            width: 40px; /* Increased size of the dolphin icon */
+            margin-right: 10px; /* Space between icon and text */
+            padding-left: 10px; /* Added padding to move icon to the right */
+        }
+        .navbar h1 {
+            color: white;
+            margin: 0;
+            font-size: 24px;
+            padding-left: 10px; /* Add padding to move text to the right */
+        }
+        .navbar ul {
+            list-style-type: none;
+            margin-left: auto; /* Pushes menu to the right */
+            padding: 0;
+            display: flex; /* Use flexbox for centering */
+            justify-content: center; /* Center the items */
+            width: 100%; /* Full width to center properly */
+        }
+        .navbar ul li {
+            margin-left: 30px; /* Increased spacing between menu items */
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px; /* Increased font size */
+            font-weight: bold; /* Make text bold */
+        }
+        .navbar ul li a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px; /* Space below the main header */
+        }
+        video {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px; /* Space below video */
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        input[type="file"] {
+            margin-top: 10px; /* Space above file input */
+        }
+        .captured-image {
+            margin-top: 20px; /* Space above captured image */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/dolphin.png" alt="Dolphin Icon"> <!-- Dolphin Icon -->
+        <h1>IDfish</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+
+    <h1>Access Camera and Upload Image</h1>
+    <video id="camera-stream" autoplay></video>
+    
+    <button id="capture-button">Capture Image</button>
+    <canvas id="canvas" style="display:none;"></canvas>
+    
+    <input type="file" accept="image/*" id="upload-image">
+    
+    <h2>Captured Image:</h2>
+    <img id="display-image" class="captured-image" style="display:none;">
+
+    <script>
+        const video = document.getElementById('camera-stream');
+        const canvas = document.getElementById('canvas');
+        const captureButton = document.getElementById('capture-button');
+        const displayImage = document.getElementById('display-image');
+
+        // Access the user's camera
+        navigator.mediaDevices.getUserMedia({ video: true })
+           .then(stream => {
+               video.srcObject = stream;
+           })
+           .catch(err => {
+               console.error("Error accessing camera:", err);
+           });
+
+       // Capture image from video stream
+       captureButton.addEventListener('click', () => {
+           const context = canvas.getContext('2d');
+           canvas.width = video.videoWidth;
+           canvas.height = video.videoHeight;
+           context.drawImage(video, 0, 0);
+           
+           // Convert to data URL and store in sessionStorage
+           const imageData = canvas.toDataURL('image/png');
+           sessionStorage.setItem('capturedImage', imageData);
+           
+           // Display the captured image
+           displayImage.src = imageData;
+           displayImage.style.display = 'block';
+       });
+
+       // Load the captured image from sessionStorage if it exists
+       window.onload = () => {
+           const savedImage = sessionStorage.getItem('capturedImage');
+           if (savedImage) {
+               displayImage.src = savedImage;
+               displayImage.style.display = 'block';
+           }
+       };
+   </script>
+
+</body>
+</html>

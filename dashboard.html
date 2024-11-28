@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Faculty Peer Review Portal</title>
+    <link rel="stylesheet" href="stylesJK.css">
+    <script defer src="dashboard.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Dashboard - Faculty Peer Review Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="loginpage.html">Login</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="submission.html">Submit Portfolio</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main class="dashboard-content">
+        <!-- Upload Section -->
+        <section id="upload-section" class="dashboard-section">
+            <h2>Upload New Portfolio</h2>
+            <p>Click here to start submitting your new portfolio. Before submitting, make sure that all parts have been completed.</p>
+            <form id="upload-form" enctype="multipart/form-data">
+                <label for="file-upload">Select file to upload:</label>
+                <input type="file" id="file-upload" name="portfolio" required>
+                <button type="submit">Upload Portfolio</button>
+            </form>
+            <div id="upload-status" style="color: green;"></div> <!-- For success/failure messages -->
+        </section>
+
+        <!-- Edit Section -->
+        <section id="edit-section" class="dashboard-section">
+            <h2>View and Edit Existing Portfolio</h2>
+            <p>Review and modify your existing portfolio. Before resubmitting, make sure that all updates have been saved.</p>
+            <a href="edit_portfolio.html"><button>Edit Portfolio</button></a>
+        </section>
+
+        <!-- Submission Status Section -->
+        <section id="status-section" class="dashboard-section">
+            <h2>Submission Status</h2>
+            <p>Check the status of your portfolio submission: Draft, Submitted, or Under Review.</p>
+            <ul id="submission-status">
+                <li>Portfolio 1: <strong>Under Review</strong></li>
+                <li>Portfolio 2: <strong>Draft</strong></li>
+            </ul>
+        </section>
+
+        <!-- Review Section -->
+        <section id="review-section" class="dashboard-section">
+            <h2>Review Portfolios</h2>
+            <p>These are the portfolios that are awaiting your review. Please provide feedback or approve as necessary.</p>
+            <ul id="review-list">
+                <li><a href="review_portfolio1.html">Portfolio 1</a> - Pending Review</li>
+                <li><a href="review_portfolio2.html">Portfolio 2</a> - Approved</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Faculty Peer Review Portal</p>
+    </footer>
+</body>
+</html>

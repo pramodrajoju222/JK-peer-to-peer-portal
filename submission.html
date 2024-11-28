@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Submission - Faculty Peer Review Portal</title>
+    <link rel="stylesheet" href="stylesJK.css">
+</head>
+<body>
+    <header>
+        <h1>Faculty Peer Review Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="loginpage.html">Login</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="submission.html">Submit Portfolio</a></li> <!-- Added link -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Portfolio Submission Page</h2>
+        <p>Give a synopsis of your teaching, service, and scholarship over the last year. Highlight significant accomplishments and overall contributions.</p>
+
+        <!-- Introduction section -->
+        <section>
+            <h3>Introduction</h3>
+            <textarea rows="5" cols="80" placeholder="Write your introduction here..."></textarea>
+        </section>
+
+        <!-- File upload for supporting documents -->
+        <section>
+            <h3>Supporting Documents</h3>
+            <p>Upload any relevant documents that support your introduction.</p>
+            <input type="file" accept=".pdf,.docx,.pptx">
+        </section>
+
+        <!-- Table of Contents -->
+        <section>
+            <h3>Table of Contents</h3>
+            <!-- Teaching Section -->
+            <h4>Teaching Section</h4>
+            <label for="advisors">Advisors List:</label>
+            <textarea id="advisors" rows="4" cols="80" placeholder="List your student advisees for the year..."></textarea>
+
+            <p>Student Evaluations:</p>
+            <input type="file" accept=".pdf,.docx,.pptx">
+
+            <label for="courses-taught">Courses Taught:</label>
+            <textarea id="courses-taught" rows="4" cols="80" placeholder="Detail all courses taught..."></textarea>
+
+            <!-- Teaching Samples -->
+            <h4>Teaching Samples</h4>
+            <p>Upload samples of instructional materials (e.g., PowerPoints, tests, homework). You can organize files by course.</p>
+            <input type="file" accept=".pdf,.docx,.pptx" multiple>
+        </section>
+
+        <!-- Scholarship Section -->
+        <section>
+            <h4>Scholarship Section</h4>
+            <label for="scholarship">List of Scholarship Activities:</label>
+            <textarea id="scholarship" rows="4" cols="80" placeholder="Describe your scholarship activities..."></textarea>
+
+            <p>Upload supporting information, such as academic papers and workshop materials.</p>
+            <input type="file" accept=".pdf,.docx,.pptx">
+        </section>
+
+        <!-- Submission Guidelines -->
+        <section>
+            <h3>Submission Guidelines</h3>
+            <ul>
+                <li>File Format: Accepted formats include PDF, DOCX, and PPTX.</li>
+                <li>File Size Limit: The maximum file size is 10MB. Compress files if necessary.</li>
+                <li>Page Limit: The total number of pages in your portfolio cannot exceed 500. You will be notified if the limit is exceeded.</li>
+            </ul>
+        </section>
+
+        <!-- Review and Approval -->
+        <section>
+            <h3>Review and Approval</h3>
+            <button type="submit">Finalize and Submit</button>
+            <p>Be sure to carefully review your portfolio before submitting it. You will be unable to make changes once submitted.</p>
+        </section>
+
+        <!-- Feedback Section -->
+        <section>
+            <h3>Faculty's Response to Feedback</h3>
+            <textarea rows="4" cols="80" placeholder="Provide responses or additional information in response to reviewer feedback..."></textarea>
+        </section>
+
+        <!-- Admin Section (For Admin Users) -->
+        <section>
+            <h3>Admin Access</h3>
+            <p><a href="admin.html">Access the Administration Page to manage your accounts.</a></p>
+            <p>Admin can add or remove faculty members and manage user roles.</p>
+            <p><a href="review.html">Review Submissions</a></p>
+            <p>View and manage all portfolio submissions. Sort the results by submission date, status, and faculty member.</p>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <p><a href="help.html">Help and Support</a></p>
+            <p><a href="terms.html">Terms & Conditions</a></p>
+            <p>For assistance, visit our <a href="help.html">Help Center</a> or contact <a href="mailto:support@example.com">Support</a>.</p>
+            <p>By using this site, you agree to our <a href="terms.html">Terms and Conditions</a> and <a href="privacy.html">Privacy Policy</a>.</p>
+            <p>This website is intended to be accessible. If you have any accessibility concerns, please contact <a href="mailto:accessibility@example.com">Accessibility Support</a>.</p>
+        </section>
+        <p>&copy; 2024 Faculty Peer Review Portal</p>
+    </footer>
+    <script>
+        // Max file size in MB (for example, 10MB)
+        const MAX_FILE_SIZE_MB = 10;
+        const MAX_PAGE_LIMIT = 500;
+    
+        // File size validation function
+        function validateFileSize(inputElement) {
+            const files = inputElement.files;
+            for (let i = 0; i < files.length; i++) {
+                const fileSizeMB = files[i].size / (1024 * 1024);
+                if (fileSizeMB > MAX_FILE_SIZE_MB) {
+                    alert("File size exceeds the limit of " + MAX_FILE_SIZE_MB + " MB. Please upload smaller files.");
+                    inputElement.value = ""; // Clear the file input
+                    return false;
+                }
+            }
+            return true;
+        }
+    
+        // Page count validation (based on number of files uploaded)
+        function validatePageLimit(filesUploaded) {
+            if (filesUploaded.length > MAX_PAGE_LIMIT) {
+                alert("The total number of files exceeds the limit of " + MAX_PAGE_LIMIT + " pages.");
+                return false;
+            }
+            return true;
+        }
+    
+        // Final confirmation before submission
+        function confirmSubmission() {
+            return confirm("Are you sure you want to submit the portfolio? You won't be able to make changes after submission.");
+        }
+    
+        // Attach event listeners to file input fields and form submission
+        document.addEventListener("DOMContentLoaded", function() {
+            // File input elements (for teaching samples, evaluations, scholarship documents, etc.)
+            const fileInputs = document.querySelectorAll("input[type='file']");
+    
+            fileInputs.forEach(function(input) {
+                input.addEventListener("change", function() {
+                    if (!validateFileSize(input)) {
+                        input.value = ""; // Clear input if file size is invalid
+                    }
+                });
+            });
+    
+            // Submission button
+            const submitButton = document.querySelector("button[type='submit']");
+            submitButton.addEventListener("click", function(event) {
+                const allFiles = document.querySelectorAll("input[type='file']");
+                let filesUploaded = [];
+                
+                allFiles.forEach(function(input) {
+                    filesUploaded = [...filesUploaded, ...input.files]; // Collect all uploaded files
+                });
+    
+                if (!validatePageLimit(filesUploaded)) {
+                    event.preventDefault(); // Prevent submission if page limit exceeded
+                    return;
+                }
+    
+                if (!confirmSubmission()) {
+                    event.preventDefault(); // Prevent submission if user cancels confirmation
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

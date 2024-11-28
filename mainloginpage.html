@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        .left {
+            flex: 1;
+            background-image: url('your-image-url.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+        }
+        .right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4; /* Light background for contrast */
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between buttons */
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF; /* Bootstrap primary color */
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+        }
+        .home .content {
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        .home .content span {
+            font-weight: bolder;
+            color: transparent;
+            -webkit-text-stroke: 0.1rem #0d0c0c;
+            font-size: 4vw;
+            display: block;
+        }
+
+        .home .content h3 {
+            font-size: 6vw;
+            color: #0a0909;
+        }
+
+        .home .content p {
+            max-width: 60rem;
+            margin: 1rem auto;
+            font-size: 1.4rem;
+            color: #aaa;
+            line-height: 2;
+        }
+
+        @media (max-width: 768px) {
+            .home {
+                margin-top: 10rem;
+            }
+
+            .home .content span {
+                font-size: 8vw;
+            }
+
+            .home .content h3 {
+                font-size: 9vw;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="left">
+        <section class="home" id="home">
+
+            <div class="content">
+                <span data-aos="fade-up" data-aos-delay="150">Welcome to the </span>
+                <h3 data-aos="fade-up" data-aos-delay="300">Faculty Peer Review Portal</h3>
+            </div>
+    
+        </section>
+    </div>
+    
+    <div class="right">
+        <div class="buttons">
+            <button onclick="location.href='admin_index.html'">Login to Admin</button>
+            <button onclick="location.href='index.html'">Login to User</button>
+        </div>
+    </div>
+
+</body>
+</html>

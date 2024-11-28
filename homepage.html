@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        .home {
+            margin: 0 auto;
+            margin-top: 9rem;
+            width: 90%;
+            border-radius: 1rem;
+            color: black;
+            /* background: -webkit-gradient(linear, left top, left bottom, from(rgba(17, 17, 17, 0.7)), to(rgba(17, 17, 17, 0.7))), url(../images/home-bg.jpg) no-repeat;
+background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(../images/home-bg.jpg) no-repeat; */
+            background-size: cover;
+            background-position: center;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            min-height: 80vh;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            padding-bottom: 5rem;
+        }
+
+        .home .content {
+            text-align: center;
+        }
+
+        .home .content span {
+            font-weight: bolder;
+            color: transparent;
+            -webkit-text-stroke: 0.1rem #0d0c0c;
+            font-size: 4vw;
+            display: block;
+        }
+
+        .home .content h3 {
+            font-size: 6vw;
+            color: #0a0909;
+        }
+
+        .home .content p {
+            max-width: 60rem;
+            margin: 1rem auto;
+            font-size: 1.4rem;
+            color: #aaa;
+            line-height: 2;
+        }
+
+        @media (max-width: 768px) {
+            .home {
+                margin-top: 10rem;
+            }
+
+            .home .content span {
+                font-size: 8vw;
+            }
+
+            .home .content h3 {
+                font-size: 9vw;
+            }
+        }
+
+        body {
+            padding: 30px;
+            background: linear-gradient(to right, #f0f2f5, #e7eff5);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #262626;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation Bar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            /* Space between logo and menu */
+            align-items: center;
+            /* Align items vertically */
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .navbar img {
+            height: 40px;
+            /* Logo height */
+        }
+
+        .navbar .links {
+            display: flex;
+            /* Display links in a row */
+            justify-content: center;
+            /* Center align links */
+            flex-grow: 1;
+            /* Allow links to grow and take available space */
+        }
+
+        .navbar a {
+            color: #262626;
+            /* Default link color */
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            /* Increased font size for better visibility */
+            margin: 0 58px;
+            /* Space between links */
+            border-radius: 5px;
+            /* Rounded corners for links */
+            font-weight: normal;
+            /* Normal weight by default */
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition */
+        }
+
+        .navbar a:hover {
+            background-color: #0095f6;
+            /* Change background on hover */
+            color: white;
+            /* Change text color on hover */
+            font-weight: bold;
+            /* Make text bold on hover */
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            left: 0;
+            /* Align dropdown to the left of the button */
+            background-color: white;
+            min-width: 250px;
+            /* Increased width for better readability */
+            max-width: calc(100vw - 40px);
+            /* Responsive max width */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            /* Rounded corners */
+            z-index: 1;
+        }
+
+        .dropdown-content div {
+            padding: 12px 16px;
+            color: black;
+        }
+
+        .dropdown-content .logout-button {
+            text-align: center;
+            /* Center align logout button in dropdown */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            /* Show the dropdown on hover */
+        }
+
+        button {
+            color: white;
+            background-color: #0095f6;
+            /* Instagram blue */
+            padding: 10px 15px;
+            /* Increased padding for buttons */
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            /* Pointer cursor on hover */
+        }
+
+        button:hover {
+            background-color: #007bbd;
+            /* Darker blue on hover */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding-top: 10px;
+            /* Space above the modal */
+            padding-bottom: 42px;
+            /* Increased space at the bottom */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px4px8px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+
+        }
+
+        .close:hover,
+        .close:foucs {
+            color: red;
+            text-decoration: none;
+            cursor: pointer;
+
+        }
+
+        section h3,
+        section h4 {
+            color: #0095f6;
+            /* Header Color for Sections*/
+        }
+
+        section label,
+        section p,
+        section textarea,
+        section input[type="file"] {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            margin-top: 10px;
+        }
+
+        button[type="submit"] {
+            margin-top: 20px;
+        }
+
+        nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.dashboard-section {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form styling */
+form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+nav ul li a:hover {
+    background-color: #00b383; /* Darker blue on hover */
+}
+
+.footer {
+    background-color: #0095f6; /* Background color */
+    color: white; /* Text color */
+    text-align: center; /* Center text */
+    padding: 1rem; /* Padding for spacing */
+    position: relative; /* Positioning */
+    bottom: 0; /* Stick to the bottom */
+    width: 100%; /* Full width */
+}
+
+@media (max-width: 768px) {
+    .footer {
+        font-size: 0.9rem; /* Responsive font size adjustment */
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+}
+        @media (max-width :768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar .links {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .navbar a {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            .dropdown-content {
+                min-width: auto;
+                max-width: calc (100 vw -40px);
+            }
+        }
+    </style>
+    <script type="module" src="./homepage.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <img src="logo.png" alt="Logo"> <!-- Replace with your logo image -->
+
+        <div class="links">
+            <a href="#home">Home</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#submit-portfolio" id="openModal">Submit Portfolio</a>
+        </div>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown">
+            <a href="#">Menu</a>
+            <div class="dropdown-content">
+                <h2 style="margin-left:auto;margin-right:auto;">User Info</h2> <!-- Added title for clarity -->
+                <div>First Name: <span id="loggedUserFName"></span></div>
+                <div>Last Name: <span id="loggedUserLName"></span></div>
+                <div>Email: <span id="loggedUserEmail"></span></div>
+                <div>Document <span id="loggedUserdoc"></span></div>
+                <!-- Logout Button -->
+                <div class="logout-button">
+                    <button id="logout">Logout</button>
+                </div>
+                <!-- You can add more items here if needed -->
+            </div>
+        </div>
+    </div>
+
+    <section class="home" id="home">
+
+        <div class="content">
+            <span data-aos="fade-up" data-aos-delay="150">Welcome to the </span>
+            <h3 data-aos="fade-up" data-aos-delay="300">Faculty Peer Review Portal</h3>
+        </div>
+
+    </section>
+
+    <section class="dashboard" id="dashboard">
+    <div style="display:flex; justify-content:center; align-items:center;" id="container">
+    Optional Image Placeholder 
+</div></section>
+
+<main class="dashboard-content">
+    <!-- Upload Section -->
+    <section id="upload-section" class="dashboard-section">
+        <h2>Upload New Portfolio</h2>
+        <p>Click here to start submitting your new portfolio. Before submitting, make sure that all parts have been completed.</p>
+        <form id="upload-form" enctype="multipart/form-data">
+
+            <input type="file" id="user_id4" accept=".pdf,.docx,.pptx">
+            <!-- <input type="text" id="doc1_title" placeholder="Enter title for Document 1"> -->
+            <button id="upload_doc4">Upload Portfolio 1</button>
+        </form>
+        <div id="upload-status" style="color: green;"></div> <!-- For success/failure messages -->
+    </section>
+
+    <!-- Edit Section -->
+    <section id="edit-section" class="dashboard-section">
+        <h2>View and Edit Existing Portfolio</h2>
+        <p>Review and modify your existing portfolio. Before resubmitting, make sure that all updates have been saved.</p>
+        <a href="edit_portfolio.html"><button>Edit Portfolio</button></a>
+    </section>
+
+    <!-- Submission Status Section -->
+    <section id="status-section" class="dashboard-section">
+        <h2>Submission Status</h2>
+        <p>Check the status of your portfolio submission: Draft, Submitted, or Under Review.</p>
+        <ul id="submission-status">
+            <li>Portfolio 1: <strong>Under Review</strong></li>
+            <li>Portfolio 2: <strong>Draft</strong></li>
+        </ul>
+    </section>
+
+    <!-- Review Section -->
+    <section id="review-section" class="dashboard-section">
+        <h2>Review Portfolios</h2>
+        <p>These are the portfolios that are awaiting your review. Please provide feedback or approve as necessary.</p>
+        <ul id="review-list">
+            <li><a href="review_portfolio1.html">Portfolio 1</a> - Pending Review</li>
+            <li><a href="review_portfolio2.html">Portfolio 2</a> - Approved</li>
+        </ul>
+    </section>
+</main>
+    
+
+    <!-- Modal for Portfolio Submission -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <main>
+                <h2 style="color:#0095f6;">Portfolio Submission Page</h2>
+                <p style="font-weight:bold;">Give a synopsis of your teaching, service, and scholarship over the last
+                    year. Highlight significant accomplishments and overall contributions.</p>
+
+                <!-- Introduction section -->
+                <section>
+                    <h3>Introduction</h3>
+                    <textarea rows="5" id="doc1_title" cols="80"
+                        placeholder="Write your introduction here..."></textarea>
+                </section>
+
+                <!-- File upload for supporting documents -->
+                <section>
+                    <h3>Supporting Documents</h3>
+                    <p>Upload any relevant documents that support your introduction.</p>
+                    <input type="file" id="user_id" accept=".pdf,.docx,.pptx">
+                    <input type="text" id="doc5_title" placeholder="Enter title for Document 1">
+                    <button id="upload_doc">Upload Document 1</button>
+                </section>
+
+                <!-- Table of Contents -->
+                <section>
+                    <h3>Table of Contents</h3>
+
+                    <!-- Teaching Section -->
+                    <h4>Teaching Section</h4>
+                    <label for="advisors">Advisors List:</label>
+                    <textarea id="doc2_title" rows="4" cols="80"
+                        placeholder="List your student advisees for the year..."></textarea>
+
+                    <p>Student Evaluations:</p>
+                    <input type="file" id="user_id1" accept=".pdf,.docx,.pptx">
+                    <!-- <input type="text" id="doc2_title" placeholder="Enter title for Document 2"> -->
+                    <button id="upload_doc1">Upload Document 2</button>
+
+                    <label for="courses-taught">Courses Taught:</label>
+                    <textarea id="doc3_title" rows="4" cols="80" placeholder="Detail all courses taught..."></textarea>
+
+                    <!-- Teaching Samples -->
+                    <h4>Teaching Samples</h4>
+                    <p>Upload samples of instructional materials (e.g., PowerPoints, tests, homework). You can organize
+                        files by course.</p>
+                    <input type="file" id="user_id2" accept=".pdf,.docx,.pptx" multiple>
+                    <!-- <input type="text" id="doc3_title" placeholder="Enter title for Document 3"> -->
+                    <button id="upload_doc2">Upload Document 3</button>
+
+                </section>
+
+                <!-- Scholarship Section -->
+                <section>
+                    <h4>Scholarship Section</h4>
+                    <label for="scholarship">List of Scholarship Activities:</label>
+                    <textarea id="doc4_title" rows="4" cols="80"
+                        placeholder="Describe your scholarship activities..."></textarea>
+
+                    <p>Upload supporting information, such as academic papers and workshop materials.</p>
+                    <input type="file" id="user_id3" accept=".pdf,.docx,.pptx">
+                    <!-- <input type="text" id="doc4_title" placeholder="Enter title for Document 4"> -->
+                    <button id="upload_doc3">Upload Document 4</button>
+                </section>
+
+                <!-- Other sections remain unchanged -->
+
+            </main><!-- End Main -->
+        </div><!-- End Modal Content -->
+    </div><!-- End Modal -->
+    <footer class="footer">
+        <p>© 2024 Faculty Peer Review Portal</p>
+    </footer>
+    <!-- Script to Handle Modal Behavior -->
+    <script type="text/javascript">
+        // Get modal element
+        var modal = document.getElementById("myModal");
+        // Get open modal button
+        var openModalBtn = document.getElementById("openModal");
+        // Get close button
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Listen for open click
+        openModalBtn.onclick = function () {
+            modal.style.display = "flex"; // Show modal with flexbox
+        }
+
+        // Listen for close click
+        closeBtn.onclick = function () {
+            modal.style.display = "none"; // Hide modal
+        }
+
+        // Listen for outside click
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none"; // Hide modal
+            }
+        }
+    </script>
+
+</body>
+
+</html>
