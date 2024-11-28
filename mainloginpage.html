@@ -4,28 +4,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Matemasie&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Goblin+One&family=Matemasie&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@800&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <!-- <style>
+
+        
+.btn-53,
+.btn-53 *,
+.btn-53 :after,
+.btn-53 :before,
+.btn-53:after,
+.btn-53:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-53 {
+  -webkit-tap-highlight-color: transparent;
+  /* -webkit-appearance: button; */
+  background-color: #000;
+  background-image: none;
+  color: #115740;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  /* -webkit-mask-image: -webkit-radial-gradient(#000, #fff); */
+  padding: 0;
+}
+
+.btn-53:disabled {
+  cursor: default;
+}
+
+.btn-53:-moz-focusring {
+  outline: auto;
+}
+
+.btn-53 svg {
+  display: block;
+  /* vertical-align: middle; */
+}
+
+.btn-53 [hidden] {
+  display: none;
+}
+
+.btn-53 {
+  border: 1px solid;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  padding: 1.2rem 3rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-53 .original {
+  background: #fecd2e;
+  color: #115740;
+  display: grid;
+  inset: 0;
+  place-content: center;
+  position: absolute;
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.btn-53:hover .original {
+  transform: translateY(100%);
+}
+
+.btn-53 .letters {
+  display: inline-flex;
+}
+
+.btn-53 span {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+}
+
+.btn-53 span:nth-child(2n) {
+  transform: translateY(15px);
+}
+
+.btn-53:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-53:hover span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.btn-53:hover span:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.btn-53:hover span:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.btn-53:hover span:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+.btn-53:hover span:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+
+
+
+
+
+
         body {
             margin: 0;
             display: flex;
             height: 100vh;
+            
         }
         .left {
             flex: 1;
-            background-image: url('your-image-url.jpg'); /* Replace with your image URL */
+            background-image: url("right2.jpg"); 
             background-size: cover;
             background-position: center;
+            /* background-color: #115740; */
+            color: white;
+
+            
         }
+
         .right {
             flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f4f4f4; /* Light background for contrast */
+            /* background-color: #f4f4f4; */
+            background-image: url("3608238.jpg");
+            background-size: cover;
+            background-position: left;
+            /* filter: blur(5px); */
+            
         }
+
+        
+
         .buttons {
             display: flex;
             flex-direction: column;
+            /* margin-top: 32em; */
             gap: 20px; /* Space between buttons */
         }
         button {
@@ -34,12 +174,14 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #007BFF; /* Bootstrap primary color */
-            color: white;
+            /* background-color: #007BFF; */
+            background-color: #115740;
+            color: #fecd2e;
             transition: background-color 0.3s ease;
         }
         button:hover {
-            background-color: #0056b3; /* Darker shade on hover */
+            background-color:#115740 ; /* Darker shade on hover */
+            color: #fecd2e;
         }
         .home .content {
             text-align: center;
@@ -48,15 +190,25 @@
 
         .home .content span {
             font-weight: bolder;
-            color: transparent;
-            -webkit-text-stroke: 0.1rem #0d0c0c;
-            font-size: 4vw;
+            /* color: transparent; */
+            -webkit-text-stroke: 0.1rem #115740;
+            font-size: 5vw;
             display: block;
+            
+  font-family: "Matemasie", serif;
+  font-weight: 400;
+  font-style: normal;
+
+
         }
 
         .home .content h3 {
             font-size: 6vw;
-            color: #0a0909;
+            color: #115740;
+            font-family: "Noto Sans", sans-serif;
+            font-weight: bolder;
+            font-style: normal;
+            line-height: 1.2em;
         }
 
         .home .content p {
@@ -66,6 +218,15 @@
             color: #aaa;
             line-height: 2;
         }
+
+       
+
+  
+
+
+
+        
+
 
         @media (max-width: 768px) {
             .home {
@@ -80,27 +241,635 @@
                 font-size: 9vw;
             }
         }
-    </style>
+    </style> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        @media only screen and (min-width: 1030px) {
+          .stats {
+            padding: 3.125rem 1.875rem 6.25rem;
+          }
+        }
+        
+        .stats {
+          width: 100%;
+          position: relative;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
+          background: #ffc711;
+          color: #333;
+          /* padding: 3.125rem 1.25rem; */
+          /* margin-top: 3.5rem; */
+          z-index: 0;
+        }
+        @media only screen and (min-width: 1030px) {
+          .page .stats {
+            width: calc(100% + (1.875rem * 2));
+            left: calc(1.875rem * -1);
+            right: auto;
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+        
+        @media only screen and (min-width: 768px) {
+          .stats {
+            padding: 3.125rem 1.875rem;
+          }
+        }
+        @media only screen and (min-width: 1030px) {
+          .stats {
+            padding: 3.125rem 1.875rem 6.25rem;
+          }
+        }
+        .stats::before, .stats::after {
+          content: "";
+          position: absolute;
+          display: inline-block;
+        }
+        @media only screen and (min-width: 1030px) {
+          .stats::before {
+            bottom: -45%;
+            right: 0;
+            border-left: none;
+            border-right: 14rem solid #115740;
+            border-bottom: 12.5rem solid transparent;
+            border-top: 9rem solid transparent;
+          }
+        }
+        @media only screen and (min-width: 1280px) {
+          .stats::before {
+            border-right-width: 17rem;
+            border-bottom-width: 12.5rem;
+            border-top-width: 11rem;
+          }
+        }
+        @media only screen and (min-width: 1030px) {
+          .stats::after {
+            top: -22%;
+            left: 0;
+            border-left: 12rem solid #fff;
+            border-right: none;
+            border-bottom: 5rem solid transparent;
+            border-top: 5.25rem solid transparent;
+          }
+        }
+        @media only screen and (min-width: 1280px) {
+          .stats::after {
+            border-left-width: 14rem;
+            border-bottom-width: 5rem;
+            border-top-width: 6.25rem;
+          }
+        }
+        .stats__decoration {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        @media only screen and (min-width: 1030px) {
+          .stats__decoration::before, .stats__decoration::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            background-repeat: no-repeat;
+            background-size: 100%;
+            pointer-events: none;
+            z-index: 1;
+          }
+          .stats__decoration::before {
+            background-image: url("../img/bling/stats-bling-top.png");
+            top: -1.6rem;
+          }
+          .stats__decoration::after {
+            background-image: url("../img/bling/stats-bling-bottom.png");
+            background-position: 0 100%;
+            bottom: 1.6rem;
+          }
+        }
+        .stats__title {
+          color: #115740;
+          font-size: 32px;
+          font-size: 2rem;
+          line-height: 2.4rem;
+          margin-bottom: 0rem;  
+                                 /* top-left and mid-right */
+          text-align: center;
+        }
+        @media only screen and (min-width: 768px) {
+          .stats__title {
+            font-size: 50px;
+            font-size: 3.125rem;
+            line-height: 3.75rem;
+          }
+        }
+        @media only screen and (min-width: 1030px) {
+          .stats__title {
+            font-size: 91px;
+            font-size: 5.6875rem;
+            line-height: 6.825rem;
+          }
+        }
+        .stats__items {
+          /* display: flex;
+          flex-direction: column; */
+          width: 100%;
+          /* max-width: 950px; */
+          margin: 0 auto;
+        }
+        @media only screen and (min-width: 768px) {
+          .stats__items {
+            flex-direction: row;
+            justify-content: space-between;
+          }
+        }
+        .stats__item {
+          flex: 0 0 100%;
+          padding: 0 3.125rem;
+        }
+        @media only screen and (min-width: 768px) {
+          .stats__item {
+            flex: 0 0 33.3333333333%;
+          }
+        }
+        .stats__item:last-of-type {
+          margin-right: 0;
+        }
+        .stats__item-value {
+          display: block;
+          font-size: 26px;
+          font-size: 1.625rem;
+          line-height: 1.95rem;
+          color: #115740;
+          font-family: "acumin-pro", sans-serif;
+          font-weight: 800;
+          text-align: center;
+          padding-bottom: 0.625rem;
+        }
+        @media only screen and (min-width: 768px) {
+          .stats__item-value {
+            font-size: 42px;
+            font-size: 2.625rem;
+            line-height: 3.15rem;
+            text-align: left;
+            padding-bottom: 0;
+          }
+        }
+        @media only screen and (min-width: 1030px) {
+          .stats__item-value {
+            font-size: 79px;
+            font-size: 4.9375rem;
+            line-height: 5.925rem;
+          }
+        }
+        .stats__item-value span {
+          font-size: 18px;
+          font-size: 1.125rem;
+          line-height: 1.35rem;
+          color: #333;
+          font-weight: 500;
+        }
+        .stats__item-copy {
+          color: inherit;
+          font-size: 14px;
+          font-size: 0.875rem;
+          line-height: 1.05rem;
+          font-weight: 600;
+        }
+        
+        .deadlines {
+          color: #fff;
+          width: 100vw;
+          height: 100%;
+          position: relative;
+          float: left;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
+          margin-bottom: 0rem;
+          
+        }
+        @media only screen and (min-width: 1030px) {
+          .page .deadlines {
+            width: calc(100% + (1.875rem * 2));
+            left: calc(1.875rem * -1);
+            right: auto;
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
+        
+        @media only screen and (min-width: 1030px) {
+          .deadlines {
+            margin-bottom: 0rem;
+          }
+        }
+        .deadlines__inner {
+          background: #115740;
+          padding: 3.75rem 1.25rem;
+        }
+        @media only screen and (min-width: 768px) {
+          .deadlines__inner {
+            padding: 1rem 1.875rem 7rem;
+          }
+        }
+        .deadlines__title {
+          font-weight: 800;
+          font-size: 28px;
+          font-size: 1.75rem;
+          line-height: 2.1rem;
+          /* margin-bottom: 1.25rem; */
+          color: inherit;
+          text-align: center;
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        @media only screen and (min-width: 375px) {
+          .deadlines__title {
+            font-size: 32px;
+            font-size: 2rem;
+            line-height: 2.4rem;
+          }
+        }
+        @media only screen and (min-width: 768px) {
+          .deadlines__title {
+            font-size: 49px;
+            font-size: 3.0625rem;
+            line-height: 3.675rem;
+          }
+        }
+        .deadlines__items {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 1.875rem;
+          justify-content: center;
+          align-items: stretch;
+          max-width: 71.25rem;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        @media only screen and (min-width: 768px) {
+          .deadlines__items {
+            flex-direction: row;
+            flex-wrap: wrap;
+          }
+        }
+        .deadlines__item {
+          flex: 0 0 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+        }
+        @media only screen and (min-width: 768px) {
+          .deadlines__item {
+            flex: 0 0 33.3333333333%;
+            margin-right: 1.875rem;
+            max-width: 220px;
+          }
+          .deadlines__item:nth-child(3), .deadlines__item:last-child {
+            margin-right: 0;
+          }
+        }
+        @media only screen and (min-width: 1030px) {
+          .deadlines__item {
+            flex: 0 0 20%;
+          }
+          .deadlines__item:nth-child(3) {
+            margin-right: 1.875rem;
+          }
+        }
+        .deadlines__item:last-of-type {
+          margin-right: 0;
+        }
+        .deadlines__item-date {
+          color: #ffc711;
+          font-family: "acumin-pro", sans-serif;
+          font-weight: 800;
+          font-size: 3.9375rem;
+          margin-bottom: 0;
+          text-align: center;
+        }
+        .deadlines__item-detail {
+          background: #fff;
+          padding: 0.625rem;
+          font-size: 0.875rem;
+          font-weight: 600;
+          line-height: 1.5;
+          color: #115740;
+          border: 1px solid #777;
+          margin-bottom: 0 !important;
+          height: 100%;
+        }
+        .deadlines__item-detail a {
+          color: #115740;
+          text-decoration: none;
+        }
+        .deadlines__item-detail a:hover {
+          text-decoration: underline;
+        }
+        .deadlines__see-more {
+          margin: 0 auto 3.125rem;
+          text-align: center;
+          display: block;
+          width: 100%;
+        }
+        .deadlines__see-more a {
+          color: inherit;
+          border-bottom: 1px solid #fff;
+          padding-bottom: 0;
+          text-decoration: none;
+        }
+        .deadlines__see-more a:hover {
+          border-bottom: none;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* buttons */
+        
+
+        .btn-53,
+.btn-53 *,
+.btn-53 :after,
+.btn-53 :before,
+.btn-53:after,
+.btn-53:before {
+  border: 0 solid;
+  box-sizing: border-box;
+}
+
+.btn-53 {
+  -webkit-tap-highlight-color: transparent;
+  /* -webkit-appearance: button; */
+  background-color: #000;
+  background-image: none;
+  color: #115740;
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  /* -webkit-mask-image: -webkit-radial-gradient(#000, #fff); */
+  padding: 0;
+}
+
+.btn-53:disabled {
+  cursor: default;
+}
+
+.btn-53:-moz-focusring {
+  outline: auto;
+}
+
+.btn-53 svg {
+  display: block;
+  /* vertical-align: middle; */
+}
+
+.btn-53 [hidden] {
+  display: none;
+}
+
+.btn-53 {
+  border: 1px solid;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  overflow: hidden;
+  padding: 1.2rem 3rem;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.btn-53 .original {
+  background: #fecd2e;
+  color: #115740;
+  display: grid;
+  inset: 0;
+  place-content: center;
+  position: absolute;
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.btn-53:hover .original {
+  transform: translateY(100%);
+}
+
+.btn-53 .letters {
+  display: inline-flex;
+}
+
+.btn-53 span {
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: transform 0.2s cubic-bezier(0.87, 0, 0.13, 1), opacity 0.2s;
+}
+
+.btn-53 span:nth-child(2n) {
+  transform: translateY(15px);
+}
+
+.btn-53:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-53:hover span:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.btn-53:hover span:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.btn-53:hover span:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.btn-53:hover span:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+.btn-53:hover span:nth-child(6) {
+  transition-delay: 0.5s;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+button:hover {
+            background-color:#115740 ; /* Darker shade on hover */
+            color: #fecd2e;
+        }
+        
+        
+        </style>
+
+
+
 </head>
 <body>
 
-    <div class="left">
+    <!-- <div class="left">
         <section class="home" id="home">
 
             <div class="content">
-                <span data-aos="fade-up" data-aos-delay="150">Welcome to the </span>
+                <span data-aos="fade-up" data-aos-delay="150" >Welcome to the </span>
                 <h3 data-aos="fade-up" data-aos-delay="300">Faculty Peer Review Portal</h3>
             </div>
     
         </section>
     </div>
     
-    <div class="right">
-        <div class="buttons">
-            <button onclick="location.href='admin_index.html'">Login to Admin</button>
-            <button onclick="location.href='index.html'">Login to User</button>
+    <div class="right"> -->
+        <!-- <img src="3608238.jpg" class="background"> -->
+        
+        <!-- <div class="buttons">
+            <button class="btn-53">
+                <div class="original">Admin Login</div>
+                <div class="letters">
+                  
+                  <span>L</span>
+                  <span>O</span>
+                  <span>G</span>
+                  <span></span>
+                  <span> </span>
+                  <span>I</span>
+                  <span>N</span>
+                </div>
+              </button> -->
+            <!-- <button onclick="location.href='admin_index.html'">Login to Admin</button>
+            <button onclick="location.href='index.html'">Login to User</button> -->
+            <!-- <button class="btn-53">
+                <div class="original">User Login</div>
+                <div class="letters">
+                  
+                  <span>L</span>
+                  <span>O</span>
+                  <span>G</span>
+                  <span></span>
+                  <span> </span>
+                  <span>I</span>
+                  <span>N</span>
+                </div>
+              </button>
         </div>
-    </div>
+    </div> -->
+
+
+
+
+
+
+    <section class="stats">
+                        
+        <div class="stats__decoration"></div>
+                
+        <h2 class="stats__title">WELCOME TO THE</h2>
+                
+        <div class="stats__items">
+                       
+           <div class="stats__item">
+                  
+              <div class="stats__item-value">FACULTY PEER REVIEW PORTAL </div>
+                  
+              <!-- <p class="stats__item-copy">For Arkansans Studying STEM</p> -->
+              </div>
+           <!-- <div class="stats__item">
+                  
+              <div class="stats__item-value">2<span>nd</span></div>
+                  
+              <p class="stats__item-copy">Lowest Graduate Tuition Rates in Arkansas</p>
+              </div> -->
+           <!-- <div class="stats__item">
+                  
+              <div class="stats__item-value">4<span>th</span></div>
+                  
+              <p class="stats__item-copy">Largest University in Arkansas</p>
+              </div>
+                   </div> -->
+            </section>
+<section class="deadlines">
+        <div class="deadlines__inner">
+           <h2 class="deadlines__title">LOGIN TO ACCESS</h2>
+           <!-- <div class="deadlines__items"><div class="deadlines__item"><span class="deadlines__item-date">10/21</span><p class="deadlines__item-detail"><a href="https://www.atu.edu/calendar/index.php#event-details/1a1b9e38-a2dc-4ef2-893c-e6c167c2c727">Early Registration for Spring 2025 Semester</a></p></div><div class="deadlines__item"><span class="deadlines__item-date">11/28</span><p class="deadlines__item-detail"><a href="https://www.atu.edu/calendar/index.php#event-details/caba7ea8-fd2a-46bf-83bb-75fd8946c12b">ATU Closed: Thanksgiving</a></p></div><div class="deadlines__item"><span class="deadlines__item-date">11/29</span><p class="deadlines__item-detail"><a href="https://www.atu.edu/calendar/index.php#event-details/4282aa80-d76e-4ce6-ad84-83325bc205fd">ATU Closed: Thanksgiving</a></p></div><div class="deadlines__item"><span class="deadlines__item-date">12/05</span><p class="deadlines__item-detail"><a href="https://www.atu.edu/calendar/index.php#event-details/ab19dd89-f841-4922-ad02-4dfdc607e281">Reading Day</a></p></div></div>
+           <div class="deadlines__see-more"><a href="https://www.arkansastechnews.com/events/" target="_self">Full Event Calendar</a></div> -->
+
+           <div class="buttons">
+            <button class="btn-53">
+                <div class="original">Admin Login</div>
+                <div class="letters">
+                  
+                  <span>L</span>
+                  <span>O</span>
+                  <span>G</span>
+                  <span></span>
+                  <span> </span>
+                  <span>I</span>
+                  <span>N</span>
+                </div>
+              </button> 
+            <!-- <button onclick="location.href='admin_index.html'">Login to Admin</button>
+            <button onclick="location.href='index.html'">Login to User</button> -->
+             <button class="btn-53">
+                <div class="original">User Login</div>
+                <div class="letters">
+                  
+                  <span>L</span>
+                  <span>O</span>
+                  <span>G</span>
+                  <span></span>
+                  <span> </span>
+                  <span>I</span>
+                  <span>N</span>
+                </div>
+              </button>
+        </div>
+        </div>
+        <!-- <div class="trim trim--bottom">
+           <div class="trim__bkg" aria-hidden="true"><img src="https://marvel-b1-cdn.bc0a.com/f00000000280486/www.atu.edu/_resources/img/trim/bottom-1.png" alt="" be_marvel="1" onerror="this.onerror=null;this.src='/_resources/img/trim/bottom-1.png'"></div>
+           <div class="trim__text"><span>Arkansas Tech University</span></div>
+        </div> -->
+     </section>
+
+
 
 </body>
 </html>
