@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
+   
     <style>
         .home {
-            margin: 0 auto;
-            margin-top: 9rem;
-            width: 90%;
-            border-radius: 1rem;
+            margin-top: 1em ;
+            /* margin-top: 9rem; */
+            width: 100%;
+            /* border-radius: 1rem; */
             color: black;
-            /* background: -webkit-gradient(linear, left top, left bottom, from(rgba(17, 17, 17, 0.7)), to(rgba(17, 17, 17, 0.7))), url(../images/home-bg.jpg) no-repeat;
-background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(../images/home-bg.jpg) no-repeat; */
+           
             background-size: cover;
             background-position: center;
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
-            min-height: 80vh;
+            min-height: 90vh;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;
@@ -28,6 +28,13 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
             -ms-flex-pack: center;
             justify-content: center;
             padding-bottom: 5rem;
+            background-image: url("class.jpg");
+        }
+
+        .para{
+            width:50%;
+            display: block;
+            justify-content: center;
         }
 
         .home .content {
@@ -37,22 +44,58 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
         .home .content span {
             font-weight: bolder;
             color: transparent;
-            -webkit-text-stroke: 0.1rem #0d0c0c;
-            font-size: 4vw;
+            -webkit-text-stroke: 0.2rem white;
+            font-size: 6vw;
             display: block;
+            font-family: "Rubik Mono One", monospace;
         }
 
         .home .content h3 {
             font-size: 6vw;
-            color: #0a0909;
+            background-color: #115740;
+            color: #efcd2e;
+            /* font-family: "Archivo Black", sans-serif;
+            font-weight: 900; */
+            font-family: "Rubik Mono One", monospace;
+            font-weight: 900;
+            -webkit-text-stroke: 0.2rem #efcd2e;
+            border-radius: 0.2em;
+            padding: 0px 20px;
         }
+
+
+
+    
+
+
+
+
+
+
+        
+
+        .home .content small{
+            color: white;
+            -webkit-text-stroke: 0.1rem ;
+            /* background-color: #efcd2e; */
+        }
+        
 
         .home .content p {
             max-width: 60rem;
             margin: 1rem auto;
-            font-size: 1.4rem;
-            color: #aaa;
-            line-height: 2;
+            font-size: 1.1rem;
+            font-weight: normal;
+            color: white;
+            border: none;
+            padding: 1em;
+            /* background-color: #e7eff5; */
+            backdrop-filter: blur(6px) saturate(181%);
+    -webkit-backdrop-filter: blur(6px) saturate(181%);
+    background-color: rgba(155, 155, 155, 0.54);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+            /* line-height: 2; */
         }
 
         @media (max-width: 768px) {
@@ -70,7 +113,7 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
         }
 
         body {
-            padding: 30px;
+            /* padding: 30px; */
             background: linear-gradient(to right, #f0f2f5, #e7eff5);
             font-family: 'Arial', sans-serif;
             color: #333;
@@ -89,16 +132,23 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
             /* Space between logo and menu */
             align-items: center;
             /* Align items vertically */
-            background-color: white;
+            background-color: #efcd2e;
             padding: 10px 20px;
-            border-radius: 8px;
+            /* border-radius: 8px; */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            /* color: #115740; */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
         }
 
         .navbar img {
             height: 40px;
             /* Logo height */
+            background-color: #efcd2e;
         }
 
         .navbar .links {
@@ -108,33 +158,78 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
             /* Center align links */
             flex-grow: 1;
             /* Allow links to grow and take available space */
+            font-weight: 900;
         }
 
         .navbar a {
-            color: #262626;
+            color: #115740;
             /* Default link color */
             text-decoration: none;
             padding: 15px 20px;
+            font-weight: bolder;
             font-size: 18px;
             /* Increased font size for better visibility */
-            margin: 0 58px;
+            margin: 0 20px;
             /* Space between links */
             border-radius: 5px;
             /* Rounded corners for links */
-            font-weight: normal;
+            /* font-weight: normal; */
             /* Normal weight by default */
             transition: background-color 0.3s, color 0.3s;
             /* Smooth transition */
         }
 
         .navbar a:hover {
-            background-color: #0095f6;
+            /* background-color: #efcd2e; */
             /* Change background on hover */
-            color: white;
+            color: #39934d;
             /* Change text color on hover */
-            font-weight: bold;
+            /* font-weight: bold; */
             /* Make text bold on hover */
         }
+
+
+
+
+        .navbar {
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  }
+  @-webkit-keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  }
+  @keyframes slideInDown {
+  0% {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  visibility: visible;
+  }
+  100% {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  }
+  } 
+×
+
+
+
+
+
+
+
+
 
         /* Dropdown Menu Styles */
         .dropdown {
@@ -145,9 +240,10 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
         .dropdown-content {
             display: none;
             position: absolute;
-            left: 0;
+            right: 2em;
+            top: 3em;
             /* Align dropdown to the left of the button */
-            background-color: white;
+            /* background-color: #115740; */
             min-width: 250px;
             /* Increased width for better readability */
             max-width: calc(100vw - 40px);
@@ -156,11 +252,16 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
             border-radius: 8px;
             /* Rounded corners */
             z-index: 1;
+            backdrop-filter: blur(6px) saturate(181%);
+    -webkit-backdrop-filter: blur(6px) saturate(181%);
+    background-color: rgba(21, 21, 21, 0.54);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
         }
 
         .dropdown-content div {
             padding: 12px 16px;
-            color: black;
+            color: white;
         }
 
         .dropdown-content .logout-button {
@@ -174,8 +275,8 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
         }
 
         button {
-            color: white;
-            background-color: #0095f6;
+            color: #115740;
+            background-color: #efcd2e;
             /* Instagram blue */
             padding: 10px 15px;
             /* Increased padding for buttons */
@@ -188,8 +289,8 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
         }
 
         button:hover {
-            background-color: #007bbd;
-            /* Darker blue on hover */
+            background-color: white;
+            
         }
 
         /* Modal Styles */
@@ -210,20 +311,23 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
             justify-content: center;
             align-items: center;
             text-align: center;
+            /* color: white; */
+            
         }
 
         .modal-content {
-            background-color: #ffffff;
+            background-color: white;
             margin: auto;
             padding: 20px;
             border-radius: 8px;
             width: 80%;
             max-width: 600px;
-            box-shadow: 0px4px8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2em;
         }
 
         .close {
-            color: #aaa;
+            color: #115740;
             float: right;
             font-size: 24px;
             font-weight: bold;
@@ -240,7 +344,7 @@ background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(17, 17, 17, 0.7)), url(.
 
         section h3,
         section h4 {
-            color: #0095f6;
+            color: #115740;
             /* Header Color for Sections*/
         }
 
@@ -291,14 +395,166 @@ nav ul li a {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
+
+.dashboard-content{
+    
+    background-color: #115740;
+    padding-top: 2em;
+    color: #115740;
+    padding-bottom:3em ;
+    margin-top: 3em;
+    
+
+}
+   
+  
+
+ 
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+.upload{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    transition: all 0.5s ease-in-out;
+    /* transform: scale(""); */
+}
+
+.upload:hover{
+    transform: scale(130%);
+    /* transition: all 0.4s ease-in-out; */
+}
+
+.edit{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    margin-bottom: 2.7em;
+    margin-top: 2em;
+    transition: all 0.5s ease-in-out;
+}
+
+.edit:hover{
+    transform: scale(130%);
+    /* transition: all 0.4s; */
+}
+
+
+
+
+
+.ap{
+    margin-bottom: 2em;
+    color: white;
+    font-family: "Rubik Mono One", monospace;
+    font-size: 3em;
+}
+
+
+.ap {
+	-webkit-animation: text-shadow-pop-top 0.6s both;
+	        animation: text-shadow-pop-top 0.6s both;
+}
+
+
+ @-webkit-keyframes text-shadow-pop-top {
+  0% {
+    text-shadow: 0 0 white, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    text-shadow: 0 1px white, 0 2px black, 0 3px black, 0 4px black, 0 5px black, 0 6px black, 0 7px black, 0 8px black;
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+}
+@keyframes text-shadow-pop-top {
+  0% {
+    text-shadow: 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    text-shadow: 0 -1px black, 0 -2px black, 0 -3px black, 0 -4px black, 0 -5px black, 0 -6px black, 0 -7px black, 0 -8px black;
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+}
+
+
+
+.row1{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.row1 h2{
+    text-align: center;
+}
+
+.dashboard-section hr{
+    width: 30%;
+    border-top: 2px solid #efcd2e;
+    transition: width 0.5s ease-in-out;
+}
+
+.dashboard-section:hover hr{
+    width: 60%;
+}
+
 .dashboard-section {
-    margin: 20px auto;
-    max-width: 800px;
+    margin-bottom: 20px;
+    max-width: 400px;
     padding: 20px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.dashboard-section1 hr{
+    width: 30%;
+    border-top: 2px solid #efcd2e;
+    transition: width 0.5s ease-in-out;
+}
+
+.dashboard-section1:hover hr{
+    width: 90%;
+}
+
+.dashboard-section1 {
+    /* margin:20px auto; */
+    margin-bottom: 20px;
+    max-width: 400px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-button{
+    margin-top: 5em;
+    width: 400px;
+}
+
+
 
 /* Form styling */
 form {
@@ -308,19 +564,194 @@ form {
     gap: 15px;
 }
 
+.file1{
+    border: none;
+    width: 20px;
+}
+
 nav ul li a:hover {
     background-color: #00b383; /* Darker blue on hover */
 }
 
 .footer {
-    background-color: #0095f6; /* Background color */
-    color: white; /* Text color */
+    background-color: #efcd2e; /* Background color */
+    color: #115740; /* Text color */
     text-align: center; /* Center text */
-    padding: 1rem; /* Padding for spacing */
-    position: relative; /* Positioning */
+    padding: 0.4rem; /* Padding for spacing */
+    /* position: fixed; Positioning */
     bottom: 0; /* Stick to the bottom */
     width: 100%; /* Full width */
+    float: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
+
+
+
+
+
+
+
+
+
+
+.white-container{
+    margin-bottom: 0em;
+    background-color: #31363F;
+    /* background-color: white; */
+}
+
+.grad-hover {
+    
+    padding-top: 0.3em;
+    margin-bottom: 2em;
+   
+    -webkit-text-fill-color: white;
+    /* margin-top: 40px; */
+    text-align: center;
+    font-family: "Rubik Mono One", monospace;
+    font-size: 3em;
+}
+
+.grad-hover {
+	-webkit-animation: text-shadow-pop-top-1 0.6s both;
+	        animation: text-shadow-pop-top-1 0.6s both;
+}
+
+
+ @-webkit-keyframes text-shadow-pop-top-1 {
+  0% {
+    text-shadow: 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    text-shadow: 0 1px black, 0 2px black, 0 3px black, 0 4px black, 0 5px black, 0 6px black, 0 7px black, 0 8px black;
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+}
+@keyframes text-shadow-pop-top-1 {
+  0% {
+    text-shadow: 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  100% {
+    text-shadow: 0 -1px black, 0 -2px black, 0 -3px black, 0 -4px black, 0 -5px black, 0 -6px black, 0 -7px black, 0 -8px black;
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+}
+
+
+.effect-cont {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px 0px;
+    /* gap: 80px; */
+}
+
+.image-boxes {
+    position: relative;
+   overflow:hidden;
+    height: 290px;
+    margin-bottom: 5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.image-boxes .box img {
+    width: 500px;
+}
+
+.image-boxes .over-content {
+    /* border: 3px solid #115740; */
+    backdrop-filter: blur(6px) saturate(181%);
+    -webkit-backdrop-filter: blur(6px) saturate(181%);
+    background-color: rgba(255, 255, 255, 0.54);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+
+    
+    padding: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 95%;
+    height: 100%;
+    font-size: 1.2em;
+}
+
+.image-boxes:hover .over-content {
+    -webkit-animation-name: slideInUpOverContent;
+    animation-name: slideInUpOverContent;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    transition: all 1s ease-in-out;
+    opacity: 1;
+}
+
+
+@-webkit-keyframes slideInUpOverContent {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUpOverContent {
+    0% {
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+.image-boxes .over-content h3 {
+    color: #efc60c;
+}
+
+.image-boxes .over-content p {
+    color:#115740;
+}
+
+.image-boxes .over-content button {
+    padding: 10px 20px;
+    background-color: #115740;
+    color: white;
+    border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     .footer {
@@ -368,7 +799,7 @@ nav ul li a:hover {
         <div class="dropdown">
             <a href="#">Menu</a>
             <div class="dropdown-content">
-                <h2 style="margin-left:auto;margin-right:auto;">User Info</h2> <!-- Added title for clarity -->
+                <h2 style="margin-left:auto;margin-right:auto; color: #efcd2e;">User Info</h2> <!-- Added title for clarity -->
                 <div>First Name: <span id="loggedUserFName"></span></div>
                 <div>Last Name: <span id="loggedUserLName"></span></div>
                 <div>Email: <span id="loggedUserEmail"></span></div>
@@ -385,25 +816,38 @@ nav ul li a:hover {
     <section class="home" id="home">
 
         <div class="content">
-            <span data-aos="fade-up" data-aos-delay="150">Welcome to the </span>
-            <h3 data-aos="fade-up" data-aos-delay="300">Faculty Peer Review Portal</h3>
+            <!-- <span data-aos="fade-up" data-aos-delay="150">Welcome to the </span> -->
+            <h3 data-aos="fade-up" data-aos-delay="300">  Faculty  <small class="toleft" style="z-index: 100;"> Peer Review Portal</small></h3>
+
+            <p class="para">This website is intended to assist you in conveniently uploading and 
+                managing your portfolio for the annual review process. 
+                Please adhere to the directions provided to guarantee a seamless submission.</p>
         </div>
 
     </section>
 
-    <section class="dashboard" id="dashboard">
-    <div style="display:flex; justify-content:center; align-items:center;" id="container">
-    Optional Image Placeholder 
-</div></section>
+    <!-- <section class="dashboard" id="dashboard">
+    <div style="display:flex; justify-content:center; align-items:center; margin-top: 4em;" id="container"> -->
+    <!-- Optional Image Placeholder  -->
+<!-- </div></section> -->
+
+
+
 
 <main class="dashboard-content">
+     
     <!-- Upload Section -->
+    <h1 class="ap">Dashboard </h1>
+    
+     <div class="row1">
     <section id="upload-section" class="dashboard-section">
-        <h2>Upload New Portfolio</h2>
-        <p>Click here to start submitting your new portfolio. Before submitting, make sure that all parts have been completed.</p>
+        <img src="upload.png" class="upload" >
+        <h2>Upload New Portfolio <hr></h2>
+        <span>Click here to start submitting your new portfolio. Before submitting, 
+            make sure that all parts have been completed.</span>
         <form id="upload-form" enctype="multipart/form-data">
 
-            <input type="file" id="user_id4" accept=".pdf,.docx,.pptx">
+            <input type="file" class="file1" id="user_id4" accept=".pdf,.docx,.pptx">
             <!-- <input type="text" id="doc1_title" placeholder="Enter title for Document 1"> -->
             <button id="upload_doc4">Upload Portfolio 1</button>
         </form>
@@ -411,81 +855,106 @@ nav ul li a:hover {
     </section>
 
     <!-- Edit Section -->
-    <section id="edit-section" class="dashboard-section">
-        <h2>View and Edit Existing Portfolio</h2>
-        <p>Review and modify your existing portfolio. Before resubmitting, make sure that all updates have been saved.</p>
-        <a href="edit_portfolio.html"><button>Edit Portfolio</button></a>
+    <section id="edit-section" class="dashboard-section1">
+        <img src="edit.png" class="edit">
+        <h2>View and Edit Existing Portfolio <hr></h2>
+        <span>Review and modify your existing portfolio. Before resubmitting, 
+            make sure that all updates have been saved.</span> </br>
+        <a href="edit_portfolio.html"><button class="edit-button">Edit Portfolio</button></a>
     </section>
+    </div>
 
-    <!-- Submission Status Section -->
-    <section id="status-section" class="dashboard-section">
-        <h2>Submission Status</h2>
-        <p>Check the status of your portfolio submission: Draft, Submitted, or Under Review.</p>
-        <ul id="submission-status">
-            <li>Portfolio 1: <strong>Under Review</strong></li>
-            <li>Portfolio 2: <strong>Draft</strong></li>
-        </ul>
-    </section>
-
-    <!-- Review Section -->
-    <section id="review-section" class="dashboard-section">
-        <h2>Review Portfolios</h2>
-        <p>These are the portfolios that are awaiting your review. Please provide feedback or approve as necessary.</p>
-        <ul id="review-list">
-            <li><a href="review_portfolio1.html">Portfolio 1</a> - Pending Review</li>
-            <li><a href="review_portfolio2.html">Portfolio 2</a> - Approved</li>
-        </ul>
-    </section>
+   
+</div>
 </main>
-    
+
+
+
+  
+
+
+<div class="white-container">
+<h2 class="grad-hover">About</h2>
+        <div class="effect-cont">
+            <div class="image-boxes">
+                <div class="box">
+                    <img src="contact.avif" alt="">
+                </div>
+                <div class="over-content">
+                    <h3>Contact Info</h3>
+                    <p>For assistance with technical issues or concerns regarding the review process,
+                         contact <b>[ jiruvuri@atu.edu] </b>or call <b>[+1(316) 516-2437].</b></p>
+                    <!-- <button>More...</button> -->
+                </div>
+            </div>
+            <div class="image-boxes">
+                <div class="box">
+                    <img src="information.avif" alt="">
+                </div>
+                <div class="over-content">
+                    <h3>Instructions</h3>
+                    <p>To submit your portfolio, please complete all areas and upload materials 
+                        in accordance with the criteria. The maximum portfolio length is 500 pages.
+                         If you have any issues or inquiries, please contact <b> [+1(316) 516-2437].</b></p>
+                    <!-- <button>More...</button> -->
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
+
+
 
     <!-- Modal for Portfolio Submission -->
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <main>
-                <h2 style="color:#0095f6;">Portfolio Submission Page</h2>
+                <h1 style="color:#efc509;">Portfolio Submission Page</h1>
                 <p style="font-weight:bold;">Give a synopsis of your teaching, service, and scholarship over the last
                     year. Highlight significant accomplishments and overall contributions.</p>
 
                 <!-- Introduction section -->
                 <section>
-                    <h3>Introduction</h3>
+                    <h2 style="color: #115740;">Introduction</h2>
                     <textarea rows="5" id="doc1_title" cols="80"
                         placeholder="Write your introduction here..."></textarea>
                 </section>
 
                 <!-- File upload for supporting documents -->
                 <section>
-                    <h3>Supporting Documents</h3>
-                    <p>Upload any relevant documents that support your introduction.</p>
+                    <h2 style="color: #115740;">Supporting Documents</h2>
+                    <span>Upload any relevant documents that support your introduction.</span>
                     <input type="file" id="user_id" accept=".pdf,.docx,.pptx">
-                    <input type="text" id="doc5_title" placeholder="Enter title for Document 1">
+                    <input type="text" id="doc5_title" placeholder="Enter title for Document 1" style="padding: 10px; background-color: #115740; border-radius: 5px; border: 1px solid #115740; color: #efcd2e;">
                     <button id="upload_doc">Upload Document 1</button>
                 </section>
 
                 <!-- Table of Contents -->
                 <section>
-                    <h3>Table of Contents</h3>
+                    <h2 style="color: #115740;">Table of Contents</h2>
 
                     <!-- Teaching Section -->
                     <h4>Teaching Section</h4>
-                    <label for="advisors">Advisors List:</label>
+                    <span for="advisors">Advisors List:</span>
                     <textarea id="doc2_title" rows="4" cols="80"
                         placeholder="List your student advisees for the year..."></textarea>
 
-                    <p>Student Evaluations:</p>
+                    <span>Student Evaluations:</span>
                     <input type="file" id="user_id1" accept=".pdf,.docx,.pptx">
                     <!-- <input type="text" id="doc2_title" placeholder="Enter title for Document 2"> -->
                     <button id="upload_doc1">Upload Document 2</button>
 
-                    <label for="courses-taught">Courses Taught:</label>
+                    <span for="courses-taught" style="display: block; margin-top: 20px;">Courses Taught:</span>
                     <textarea id="doc3_title" rows="4" cols="80" placeholder="Detail all courses taught..."></textarea>
 
                     <!-- Teaching Samples -->
                     <h4>Teaching Samples</h4>
-                    <p>Upload samples of instructional materials (e.g., PowerPoints, tests, homework). You can organize
-                        files by course.</p>
+                    <span>Upload samples of instructional materials (e.g., PowerPoints, tests, homework). You can organize
+                        files by course.</span>
                     <input type="file" id="user_id2" accept=".pdf,.docx,.pptx" multiple>
                     <!-- <input type="text" id="doc3_title" placeholder="Enter title for Document 3"> -->
                     <button id="upload_doc2">Upload Document 3</button>
@@ -495,11 +964,11 @@ nav ul li a:hover {
                 <!-- Scholarship Section -->
                 <section>
                     <h4>Scholarship Section</h4>
-                    <label for="scholarship">List of Scholarship Activities:</label>
+                    <span for="scholarship">List of Scholarship Activities:</span>
                     <textarea id="doc4_title" rows="4" cols="80"
                         placeholder="Describe your scholarship activities..."></textarea>
 
-                    <p>Upload supporting information, such as academic papers and workshop materials.</p>
+                    <span>Upload supporting information, such as academic papers and workshop materials.</span>
                     <input type="file" id="user_id3" accept=".pdf,.docx,.pptx">
                     <!-- <input type="text" id="doc4_title" placeholder="Enter title for Document 4"> -->
                     <button id="upload_doc3">Upload Document 4</button>
