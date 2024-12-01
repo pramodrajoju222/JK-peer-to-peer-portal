@@ -63,17 +63,6 @@
             padding: 0px 20px;
         }
 
-
-
-    
-
-
-
-
-
-
-        
-
         .home .content small{
             color: white;
             -webkit-text-stroke: 0.1rem ;
@@ -221,17 +210,7 @@
   transform: translateY(0);
   }
   } 
-×
-
-
-
-
-
-
-
-
-
-        /* Dropdown Menu Styles */
+/* Dropdown Menu Styles */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -407,24 +386,6 @@ nav ul li a {
 
 }
    
-  
-
- 
-
-
-
-
-
-  
-
-  
-
-
-
-
-
-
-
 
 
 .upload{
@@ -586,15 +547,6 @@ nav ul li a:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
 .white-container{
     margin-bottom: 0em;
     background-color: #31363F;
@@ -740,19 +692,6 @@ nav ul li a:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: 768px) {
     .footer {
         font-size: 0.9rem; /* Responsive font size adjustment */
@@ -800,7 +739,27 @@ nav ul li a:hover {
     justify-content: center;
 }
 
+.toast {
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    position: fixed;
+    top: 20px; /* Changed from bottom to top */
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+}
 
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
 
 
     </style>
@@ -849,21 +808,31 @@ nav ul li a:hover {
 
     </section>
 
-
-
-
-
-
-
-
-
 <main class="space">
     <section class="dashboard" id="dashboard">
         <h2 class="docs">Uploaded Documents</h2>
     <div  id="container">
     <!-- Optional Image Placeholder  -->
+    
+    
     </div>
     </section>
+    
+</div>
+<div id="container"></div> <!-- Container to display the documents -->
+
+<!-- Edit Modal -->
+<div id="editModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc;">
+<p>are you sure to delete the record?</p>
+
+    <label for="editUrl">URL:</label>
+    <input id="editUrl" type="text" placeholder="Enter URL"><br><br>
+
+    <label for="editCategory">Category:</label>
+    <input id="editCategory" type="text" placeholder="Enter Category"><br><br>
+
+    <button id="updateButton">delete</button>
+    <button onclick="document.getElementById('editModal').style.display = 'none';">Cancel</button>
 </main>
 
 
@@ -902,11 +871,6 @@ nav ul li a:hover {
 </div>
 </main>
 
-
-
-  
-
-
 <div class="white-container">
 <h2 class="grad-hover">About</h2>
         <div class="effect-cont">
@@ -935,12 +899,6 @@ nav ul li a:hover {
             </div>
         </div>
 </div>
-
-
-
-
-
-
 
     <!-- Modal for Portfolio Submission -->
     <div id="myModal" class="modal">
