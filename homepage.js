@@ -1,6 +1,15 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"; 
 import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"; 
-import { getFirestore, getDoc, doc, collection, addDoc, getDocs, query, where, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"; 
+import { getFirestore, 
+getDoc, 
+doc, 
+collection, 
+addDoc, 
+getDocs, 
+query, 
+where, 
+updateDoc, 
+deleteDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"; 
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js"; 
 
 const firebaseConfig = { 
@@ -38,109 +47,206 @@ toast.style.zIndex = '1000';
 document.body.appendChild(toast);
 
 setTimeout(() => {
-    document.body.removeChild(toast);
+document.body.removeChild(toast);
 }, 3000);
 }
 
-async function getDocumentsFromDb() { 
-const loggedInUserId = localStorage.getItem('loggedInUserId'); 
-const q = query(userCollection, where("userId", "==", loggedInUserId)); 
-const querySnapshot = await getDocs(q); 
-container.innerHTML = ''; 
+async function getDocumentsFromDb() {
+const loggedInUserId = localStorage.getItem('loggedInUserId');
+const q = query(userCollection, where("userId", "==", loggedInUserId));
+const querySnapshot = await getDocs(q);
+container.innerHTML = '';
 
-querySnapshot.forEach((doc) => { 
-    const data = doc.data(); 
-    let element; 
-    
-    if (data.category === 'image') { 
-        element = `<div id="${doc.id}"> <img src="${data.url}" alt="Image" style="max-width: 100px;"> <button onclick="editDocument('${doc.id}')">Edit</button> </div>`; 
-    } else if (data.category === 'video') { 
-        element = `<div id="${doc.id}"> <video controls style="max-width: 100px;"> <source src="${data.url}" type="video/mp4"> Your browser does not support the video tag. </video> <button onclick="editDocument('${doc.id}')">Edit</button> </div>`; 
-    } else if (data.category === 'document') { 
-        element = `<div id="${doc.id}"> <a href="${data.url}" target="_blank">Download Document</a> <button onclick="editDocument('${doc.id}')">Edit</button> </div>`; 
-    } else if (data.category === 'pdf') { 
-        element = `<div id="${doc.id}"> <a href="${data.url}" target="_blank">View PDF</a> <button onclick="editDocument('${doc.id}')">Edit</button> </div>`; 
-    } else if (data.category === 'excel') { 
-        element = `<div id="${doc.id}"> <a href="${data.url}" target="_blank">Download Excel File</a> <button onclick="editDocument('${doc.id}')">Edit</button> </div>`; 
-    } else if (data.category === 'word') { 
-        element = `<div id="${doc.id}"> <a href="${data.url}" target="_blank">Download Word Document</a> <button onclick="editDocument('${doc.id}')">Edit</button> </div>`; 
-    } 
-    
-    container.innerHTML += element; // Append the element to container 
-}); 
+querySnapshot.forEach((doc) => {
+    const data = doc.data();
+    let element;
+
+    if (data.category === 'image') {
+        element = `<div id="${doc.id}">
+                        <img src="${data.url}" alt="Image" style="max-width: 100px;">
+                        <button onclick="editDocument('${doc.id}')">Edit</button>
+                    </div>`;
+    } else if (data.category === 'video') {
+        element = `<div id="${doc.id}">
+                        <video controls style="max-width: 100px;">
+                            <source src="${data.url}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <button onclick="editDocument('${doc.id}')">Edit</button>
+                    </div>`;
+    } else if (data.category === 'document') {
+        element = `<div id="${doc.id}">
+                        <a href="${data.url}" target="_blank">Download Document</a>
+                        <button onclick="editDocument('${doc.id}')">Edit</button>
+                    </div>`;
+    } else if (data.category === 'pdf') {
+        element = `<div id="${doc.id}">
+                        <a href="${data.url}" target="_blank">View PDF</a>
+                        <button onclick="editDocument('${doc.id}')">Edit</button>
+                    </div>`;
+    } else if (data.category === 'excel') {
+        element = `<div id="${doc.id}">
+                        <a href="${data.url}" target="_blank">Download Excel File</a>
+                        <button onclick="editDocument('${doc.id}')">Edit</button>
+                    </div>`;
+    } else if (data.category === 'word') {
+        element = `<div id="${doc.id}">
+                        <a href="${data.url}" target="_blank">Download Word Document</a>
+                        <button onclick="editDocument('${doc.id}')">Edit</button>
+                    </div>`;
+    }
+
+    container.innerHTML += element; // Append the element to container
+});
 }
+
+// Edit Document Function
+window.editDocument = async function(docId) {
+const docRef = doc(db, "Documents", docId);
+
+try {
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        const data = docSnap.data();
+        document.getElementById("editUrl").value = data.url;
+        document.getElementById("editCategory").value = data.category;
+        document.getElementById("editModal").style.display = "flex";
+
+        document.getElementById("updateButton").onclick = function () {
+            updateDocument(docRef);
+        };
+    } else {
+        showToast("Document not found!");
+    }
+} catch (error) {
+    showToast(`Error getting document: ${error.message}`);
+}
+};
+
 
 // Upload Document Functionality
 upload_doc.addEventListener("click", () => { 
 const userStorageRef = ref(storage, user_id.files[0].name); 
 
 if (user_id.files.length === 0) {
-    showToast("No file selected for upload.");
-    return;
+showToast("No file selected for upload.");
+return;
 }
 
 upload_doc.disabled = true; 
 
 uploadBytes(userStorageRef, user_id.files[0]) 
-    .then((snapshot) => { 
-        showToast('Uploaded a blob or file!'); // Toast notification
-        return getDownloadURL(ref(userStorageRef)); 
-    }) 
-    .then((url) => { 
-        const loggedInUserId = localStorage.getItem('loggedInUserId'); 
-        const fileType = user_id.files[0].type; 
-        let category; 
+.then((snapshot) => { 
+    showToast('Uploaded a blob or file!'); // Toast notification
+    return getDownloadURL(ref(userStorageRef)); 
+}) 
+.then((url) => { 
+    const loggedInUserId = localStorage.getItem('loggedInUserId'); 
+    const fileType = user_id.files[0].type; 
+    let category; 
 
-        if (fileType.startsWith('image/')) { category = 'image'; } 
-        else if (fileType.startsWith('video/')) { category = 'video'; }  
-        else if (fileType === 'application/pdf') { category = 'pdf'; }  
-        else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document') || fileType.startsWith('application/msword')) { category = 'word'; }  
-        else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) { category = 'excel'; }  
-        else { category = 'document'; }
+    if (fileType.startsWith('image/')) { category = 'image'; } 
+    else if (fileType.startsWith('video/')) { category = 'video'; }  
+    else if (fileType === 'application/pdf') { category = 'pdf'; }  
+    else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document') || fileType.startsWith('application/msword')) { category = 'word'; }  
+    else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) { category = 'excel'; }  
+    else { category = 'document'; }
 
-        return addDoc(userCollection, { url, category, userId: loggedInUserId });  
-    })  
-    .then(() => {  
-        showToast("Document uploaded to database"); // Toast notification
-        upload_doc.disabled = false;  
-        getDocumentsFromDb(); // Refresh displayed documents  
-    })  
-    .catch((error) => {  
-        showToast(`Error: ${error.message}`); // Toast notification
-        upload_doc.disabled = false;  
-    });  
+    return addDoc(userCollection, { url, category, userId: loggedInUserId });  
+})  
+.then(() => {  
+    showToast("Document uploaded to database"); // Toast notification
+    upload_doc.disabled = false;  
+    getDocumentsFromDb(); // Refresh displayed documents  
+})  
+.catch((error) => {  
+    showToast(`Error: ${error.message}`); // Toast notification
+    upload_doc.disabled = false;  
+});  
 });  
 
-function editDocument(docId) {  
-const docRef = doc(db, "Documents", docId);  
-getDoc(docRef).then((docSnap) => {  
-    if (docSnap.exists()) {  
-        const data = docSnap.data();  
-        document.getElementById("editUrl").value = data.url;  
-        document.getElementById("editCategory").value = data.category;  
-        document.getElementById("editModal").style.display = "flex";  
+function editDocument(docId) {
+const docRef = doc(db, "Documents", docId);
+getDoc(docRef).then((docSnap) => {
+    if (docSnap.exists()) {
+        const data = docSnap.data();
 
-        document.getElementById("updateButton").onclick = function () { updateDocument(docRef); };  
-    }  
-}).catch((error) => {  
-    showToast(`Error getting document: ${error.message}`); // Toast notification
-});  
-}  
+        const editUrlInput = document.getElementById("editUrl");
+        const editCategoryInput = document.getElementById("editCategory");
+        const editModal = document.getElementById("editModal");
 
-function updateDocument(docRef) {  
-const updatedUrl = document.getElementById("editUrl").value;  
-const updatedCategory = document.getElementById("editCategory").value;  
+        // Validate if modal and inputs are available
+        if (!editUrlInput || !editCategoryInput || !editModal) {
+            showToast("Modal or inputs are missing in the DOM!");
+            return;
+        }
 
-updateDoc(docRef, { url: updatedUrl, category: updatedCategory })  
-    .then(() => {  
-        showToast("Document successfully updated!"); // Toast notification
-        document.getElementById("editModal").style.display = "none";  
-        getDocumentsFromDb(); // Refresh displayed documents  
-    })  
-    .catch((error) => {  
-        showToast(`Error updating document: ${error.message}`); // Toast notification
-    });  
-}  
+        // Populate modal fields
+        editUrlInput.value = data.url;
+        editCategoryInput.value = data.category;
+        editModal.style.display = "flex";
+
+        // Attach update handler
+        document.getElementById("updateButton").onclick = function () {
+            updateDocument(docRef);
+        };
+    }
+}).catch((error) => {
+    showToast(`Error getting document: ${error.message}`);
+});
+}
+
+// Function to update the document in Firestore
+
+// Update Document Function
+// Delete Document Function
+// Delete Document Function
+async function deleteDocument(docRef) {
+    try {
+        await deleteDoc(docRef); // Delete the document from Firestore
+        showToast("Document successfully deleted!");
+        document.getElementById("editModal").style.display = "none"; // Close the modal
+        getDocumentsFromDb(); // Refresh the displayed documents
+    } catch (error) {
+        showToast(`Error deleting document: ${error.message}`);
+    }
+}
+
+// Edit Document Function
+window.editDocument = async function (docId) {
+    const docRef = doc(db, "Documents", docId);
+
+    try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            document.getElementById("editUrl").value = data.url;
+            document.getElementById("editCategory").value = data.category;
+            document.getElementById("editModal").style.display = "flex";
+
+            document.getElementById("updateButton").textContent = "Delete"; // Change button text to 'Delete'
+            document.getElementById("updateButton").onclick = function () {
+                deleteDocument(docRef); // Call delete function
+            };
+        } else {
+            showToast("Document not found!");
+        }
+    } catch (error) {
+        showToast(`Error getting document: ${error.message}`);
+    }
+};
+
+// Initialize the application by fetching documents
+
+
+// Toast notification function
+
+// Call to fetch documents on page load
+document.addEventListener('DOMContentLoaded', () => {
+getDocumentsFromDb();
+});
 
 
 const uploadButtons = [
@@ -171,60 +277,60 @@ document.getElementById('doc5_title')
 
 uploadButtons.forEach((button, index) => {
 button.addEventListener("click", () => {
-    const fileInput = fileInputs[index];
-    const titleInput = titleInputs[index];
+const fileInput = fileInputs[index];
+const titleInput = titleInputs[index];
 
-    if (fileInput.files.length === 0) {
-        console.error("No file selected for upload.");
-        return;
-    }
+if (fileInput.files.length === 0) {
+    console.error("No file selected for upload.");
+    return;
+}
 
-    const userStorageRef = ref(storage, fileInput.files[0].name);
+const userStorageRef = ref(storage, fileInput.files[0].name);
 
-    button.disabled = true;
-    uploadBytes(userStorageRef, fileInput.files[0])
-        .then((snapshot) => {
-            console.log('Uploaded a blob or file!');
-            return getDownloadURL(ref(userStorageRef));
-        })
-        .then((url) => {
-            const loggedInUserId = localStorage.getItem('loggedInUserId');
-            const fileType = fileInput.files[0].type;
-            let category;
+button.disabled = true;
+uploadBytes(userStorageRef, fileInput.files[0])
+    .then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+        return getDownloadURL(ref(userStorageRef));
+    })
+    .then((url) => {
+        const loggedInUserId = localStorage.getItem('loggedInUserId');
+        const fileType = fileInput.files[0].type;
+        let category;
 
-            // Determine category based on file type
-            if (fileType.startsWith('image/')) {
-                category = 'image';
-            } else if (fileType.startsWith('video/')) {
-                category = 'video';
-            } else if (fileType === 'application/pdf') {
-                category = 'pdf';
-            } else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document') ||
-                fileType.startsWith('application/msword')) {
-                category = 'word';
-            } else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
-                category = 'excel';
-            } else {
-                category = 'document'; // Default for other types
-            }
+        // Determine category based on file type
+        if (fileType.startsWith('image/')) {
+            category = 'image';
+        } else if (fileType.startsWith('video/')) {
+            category = 'video';
+        } else if (fileType === 'application/pdf') {
+            category = 'pdf';
+        } else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.wordprocessingml.document') ||
+            fileType.startsWith('application/msword')) {
+            category = 'word';
+        } else if (fileType.startsWith('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')) {
+            category = 'excel';
+        } else {
+            category = 'document'; // Default for other types
+        }
 
-            // Save the title along with the URL and category
-            return addDoc(userCollection, {
-                url,
-                category,
-                userId: loggedInUserId,
-                title: titleInput.value // Save the title from the text input
-            });
-        })
-        .then(() => {
-            console.log("Document uploaded to database");
-            button.disabled = false;
-            getDocumentsFromDb(); // Refresh displayed documents
-        })
-        .catch((error) => {
-            console.error(error);
-            button.disabled = false;
+        // Save the title along with the URL and category
+        return addDoc(userCollection, {
+            url,
+            category,
+            userId: loggedInUserId,
+            title: titleInput.value // Save the title from the text input
         });
+    })
+    .then(() => {
+        console.log("Document uploaded to database");
+        button.disabled = false;
+        getDocumentsFromDb(); // Refresh displayed documents
+    })
+    .catch((error) => {
+        console.error(error);
+        button.disabled = false;
+    });
 });
 });
 
@@ -232,24 +338,24 @@ const auth = getAuth();
 
 onAuthStateChanged(auth, (user) => {  
 if (user) {  
-    const loggedInUserId = localStorage.getItem('loggedInUserId');  
-    const docRef = doc(db, "users", loggedInUserId);  
+const loggedInUserId = localStorage.getItem('loggedInUserId');  
+const docRef = doc(db, "users", loggedInUserId);  
 
-    getDoc(docRef).then((docSnap) => {  
-        if (docSnap.exists()) {  
-            const userData = docSnap.data();   
-            document.getElementById('loggedUserFName').innerText = userData.firstName;   
-            document.getElementById('loggedUserEmail').innerText = userData.email;   
-            document.getElementById('loggedUserLName').innerText = userData.lastName;   
-        } else {
-            showToast("No document found matching id"); // Toast notification
-        }   
-    }).catch((error) => {
-        showToast(`Error getting document: ${error.message}`); // Toast notification
-    });   
-    
+getDoc(docRef).then((docSnap) => {  
+    if (docSnap.exists()) {  
+        const userData = docSnap.data();   
+        document.getElementById('loggedUserFName').innerText = userData.firstName;   
+        document.getElementById('loggedUserEmail').innerText = userData.email;   
+        document.getElementById('loggedUserLName').innerText = userData.lastName;   
+    } else {
+        showToast("No document found matching id"); // Toast notification
+    }   
+}).catch((error) => {
+    showToast(`Error getting document: ${error.message}`); // Toast notification
+});   
+
 } else {
-    showToast("User Id not Found in Local storage"); // Toast notification
+showToast("User Id not Found in Local storage"); // Toast notification
 }   
 });  
 
@@ -259,8 +365,8 @@ logoutButton.addEventListener('click', () => {
 localStorage.removeItem('loggedInUserId'); 
 
 signOut(auth).then(() => {
-    window.location.href='index.html';   
+window.location.href='index.html';   
 }).catch((error) => {
-    showToast(`Error Signing out: ${error.message}`); // Toast notification
+showToast(`Error Signing out: ${error.message}`); // Toast notification
 });   
 });
