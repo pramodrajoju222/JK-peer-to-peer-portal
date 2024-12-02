@@ -9,9 +9,7 @@
     <style>
         .home {
             margin-top: 1em ;
-            /* margin-top: 9rem; */
             width: 100%;
-            /* border-radius: 1rem; */
             color: black;
            
             background-size: cover;
@@ -78,7 +76,7 @@
             color: white;
             border: none;
             padding: 1em;
-            /* background-color: #e7eff5; */
+            
             backdrop-filter: blur(6px) saturate(181%);
     -webkit-backdrop-filter: blur(6px) saturate(181%);
     background-color: rgba(155, 155, 155, 0.54);
@@ -102,7 +100,6 @@
         }
 
         body {
-            /* padding: 30px; */
             background: linear-gradient(to right, #f0f2f5, #e7eff5);
             font-family: 'Arial', sans-serif;
             color: #333;
@@ -114,7 +111,6 @@
             margin-bottom: 20px;
         }
 
-        /* Navigation Bar Styles */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -162,19 +158,13 @@
             /* Space between links */
             border-radius: 5px;
             /* Rounded corners for links */
-            /* font-weight: normal; */
-            /* Normal weight by default */
+            
             transition: background-color 0.3s, color 0.3s;
             /* Smooth transition */
         }
 
         .navbar a:hover {
-            /* background-color: #efcd2e; */
-            /* Change background on hover */
             color: #39934d;
-            /* Change text color on hover */
-            /* font-weight: bold; */
-            /* Make text bold on hover */
         }
 
 
@@ -220,9 +210,7 @@
             display: none;
             position: absolute;
             right: 2em;
-            top: 3em;
-            /* Align dropdown to the left of the button */
-            /* background-color: #115740; */
+            top: 2em;
             min-width: 250px;
             /* Increased width for better readability */
             max-width: calc(100vw - 40px);
@@ -429,36 +417,6 @@ nav ul li a {
 }
 
 
-.ap {
-	-webkit-animation: text-shadow-pop-top 0.6s both;
-	        animation: text-shadow-pop-top 0.6s both;
-}
-
-
- @-webkit-keyframes text-shadow-pop-top {
-  0% {
-    text-shadow: 0 0 white, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    text-shadow: 0 1px white, 0 2px black, 0 3px black, 0 4px black, 0 5px black, 0 6px black, 0 7px black, 0 8px black;
-    -webkit-transform: translateY(8px);
-            transform: translateY(8px);
-  }
-}
-@keyframes text-shadow-pop-top {
-  0% {
-    text-shadow: 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    text-shadow: 0 -1px black, 0 -2px black, 0 -3px black, 0 -4px black, 0 -5px black, 0 -6px black, 0 -7px black, 0 -8px black;
-    -webkit-transform: translateY(8px);
-            transform: translateY(8px);
-  }
-}
 
 
 
@@ -555,7 +513,7 @@ nav ul li a:hover {
 
 .grad-hover {
     
-    padding-top: 0.3em;
+    padding-top: 1.3em;
     margin-bottom: 2em;
    
     -webkit-text-fill-color: white;
@@ -565,36 +523,6 @@ nav ul li a:hover {
     font-size: 3em;
 }
 
-.grad-hover {
-	-webkit-animation: text-shadow-pop-top-1 0.6s both;
-	        animation: text-shadow-pop-top-1 0.6s both;
-}
-
-
- @-webkit-keyframes text-shadow-pop-top-1 {
-  0% {
-    text-shadow: 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    text-shadow: 0 1px black, 0 2px black, 0 3px black, 0 4px black, 0 5px black, 0 6px black, 0 7px black, 0 8px black;
-    -webkit-transform: translateY(8px);
-            transform: translateY(8px);
-  }
-}
-@keyframes text-shadow-pop-top-1 {
-  0% {
-    text-shadow: 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black, 0 0 black;
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-  100% {
-    text-shadow: 0 -1px black, 0 -2px black, 0 -3px black, 0 -4px black, 0 -5px black, 0 -6px black, 0 -7px black, 0 -8px black;
-    -webkit-transform: translateY(8px);
-            transform: translateY(8px);
-  }
-}
 
 
 .effect-cont {
@@ -722,17 +650,19 @@ nav ul li a:hover {
 
 
 .dashboard{
-    background-color: #ccc;
+    background-color: #e1f0dc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     text-align: center;
-    max-width: 500px;
     margin-top: 3em;
     padding: 2em;
+    width: 1000px;
+    border-radius: 1em;
 }
 
     
-/* .docs{
-    color: white;
-} */
+.docs{
+    color: #115740;
+}
 
 .space{
     display: flex;
@@ -808,32 +738,7 @@ nav ul li a:hover {
 
     </section>
 
-<main class="space">
-    <section class="dashboard" id="dashboard">
-        <h2 class="docs">Uploaded Documents</h2>
-    <div  id="container">
-    <!-- Optional Image Placeholder  -->
-    
-    
-    </div>
-    </section>
-    
-</div>
-<div id="container"></div> <!-- Container to display the documents -->
 
-<!-- Edit Modal -->
-<div id="editModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid #ccc;">
-<p>are you sure to delete the record?</p>
-
-    <label for="editUrl">URL:</label>
-    <input id="editUrl" type="text" placeholder="Enter URL"><br><br>
-
-    <label for="editCategory">Category:</label>
-    <input id="editCategory" type="text" placeholder="Enter Category"><br><br>
-
-    <button id="updateButton">delete</button>
-    <button onclick="document.getElementById('editModal').style.display = 'none';">Cancel</button>
-</main>
 
 
 
@@ -870,6 +775,45 @@ nav ul li a:hover {
    
 </div>
 </main>
+
+
+
+
+
+
+
+
+<main class="space">
+    <section class="dashboard" id="dashboard">
+        <h2 class="docs">Uploaded Documents</h2>
+    <div  id="container">
+    <!-- Optional Image Placeholder  -->
+    
+    
+    </div>
+    </section>
+    
+</div>
+<div id="container"></div> <!-- Container to display the documents -->
+
+<!-- Edit Modal -->
+<div id="editModal" style="display: none; justify-content: center; position: fixed; z-index: 99; width: 90%; top: 50%; left: 50%; border-radius: 1em; transform: translate(-50%, -50%); background: #eaefd2; padding: 20px; border: 1px solid #ccc; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);">
+<p style="color: #115740;">Are you sure to delete the record?</p>
+
+    <label for="editUrl" style="margin-left: 4em; margin-top: 1em; color: #115740;">URL:</label>
+    <input id="editUrl" style="margin-left: 1em; width: 20em;" type="text" placeholder="Enter URL"><br><br>
+
+    <label for="editCategory" style="margin-left: 4em; margin-top: 1em; color: #115740;">Category:</label>
+    <input id="editCategory" style="margin-left: 1em;" type="text" placeholder="Enter Category"><br><br>
+
+    <button id="updateButton" style="margin: 0em 3em;">delete</button>
+    <button onclick="document.getElementById('editModal').style.display = 'none';">Cancel</button>
+</main>
+
+
+
+
+
 
 <div class="white-container">
 <h2 class="grad-hover">About</h2>
